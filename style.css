@@ -5,6 +5,10 @@ body {
   background-image: linear-gradient(to bottom, #007991, #78ffd6);
 }
 
+h1 {
+  font-family: "Playfair Display", serif;
+  color: #000030;
+}
 header {
   display: flex;
   justify-content: center;
@@ -86,4 +90,17 @@ button {
   max-height: 120px;
   top: 0;
   left: 60%;
+}
+
+#show-all-character-div {
+  display: none;
+  max-height: 70px;
+  width: 100%;
+  position: absolute;
+  background-color: #000080;
+  padding: 20px;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
