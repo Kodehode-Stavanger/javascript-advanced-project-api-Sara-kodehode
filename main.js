@@ -2,7 +2,7 @@ const searchForm = document.getElementById("search-character-form");
 const input = document.getElementById("search-input");
 const showAllCharactersBtn = document.getElementById("show-all-characters-btn");
 showAllCharactersBtn.style.display = "none";
-showAllCharactersBtn.style.marginLeft = "710px";
+showAllCharactersBtn.style.margin = "0 auto";
 const nextPageBtn = document.getElementById("next-page-btn");
 const previousPageBtn = document.getElementById("previous-page-btn");
 
@@ -52,7 +52,7 @@ function display(data) {
         listContainer.append(charElem);
       }
     });
-  } else {
+  } else if (data.data.name) {
     const charElem = document.createElement("li");
     charElem.classList.add("character-item");
     const charName = document.createElement("h2");
@@ -66,6 +66,15 @@ function display(data) {
     charFilms.textContent = data.data.films[0];
     charElem.append(charFilms);
     listContainer.append(charElem);
+  } else {
+    const message = document.createElement("h3");
+    message.textContent =
+      "Unfortunately, This character doesn't exist in our database";
+    message.style.padding = "10px";
+    message.style.width = "fit-content";
+    message.style.whiteSpace = "nowrap";
+    message.style.margin = "0 auto";
+    container.appendChild(message);
   }
 
   nextPageBtn.addEventListener("click", (e) => {
