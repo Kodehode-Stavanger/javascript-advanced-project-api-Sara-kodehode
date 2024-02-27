@@ -19,9 +19,8 @@ async function getCharacterData(url) {
     const result = await fetch(url);
     const data = await result.json();
 
-    console.log(typeof data);
-    //console.log(data);
-    //console.log(data.data);
+    //console.log(typeof data);
+    console.log(data);
 
     display(data);
   } catch (error) {
@@ -34,7 +33,7 @@ function display(data) {
   while (listContainer.firstChild) {
     listContainer.firstChild.remove();
   }
-  if (!data.name) {
+  if (data.data.length > 0) {
     data.data.forEach((character) => {
       const charElem = document.createElement("li");
       charElem.classList.add("character-item");
@@ -47,13 +46,9 @@ function display(data) {
         charName.style.textAlign = "center";
         charElem.append(charName);
         charElem.append(charImg);
-
-        character.films.forEach((film) => {
-          let charFilms = document.createElement("p");
-          charFilms.textContent = film;
-          // charElem.append(charFilms);
-        });
-
+        const charFilms = document.createElement("p");
+        charFilms.textContent = character.films[0];
+        charElem.append(charFilms);
         listContainer.append(charElem);
       }
     });
@@ -63,30 +58,28 @@ function display(data) {
     const charName = document.createElement("h2");
     const charImg = document.createElement("img");
     charImg.classList.add("char-img");
-    charImg.setAttribute("src", data.imageUrl);
-    if (data.imageUrl) {
-      charName.textContent = data.name;
-      console.log("hi");
-      charName.style.textAlign = "center";
-      charElem.append(charName);
-      charElem.append(charImg);
-
-      // character.films.forEach((film) => {
-      //   let charFilms = document.createElement("p");
-      //   charFilms.textContent = film;
-      //   // charElem.append(charFilms);
-      // });
-
-      listContainer.append(charElem);
-    }
+    charImg.setAttribute("src", data.data.imageUrl);
+    charName.textContent = data.data.name;
+    charElem.append(charName);
+    charElem.append(charImg);
+    const charFilms = document.createElement("p");
+    charFilms.textContent = data.data.films[0];
+    charElem.append(charFilms);
+    listContainer.append(charElem);
   }
 
-  nextPageBtn.addEventListener("click", () => {
+  nextPageBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    //e.stopPropagation();
+    //e.stopImmediatePropagation();
+
     getCharacterData(data.info.nextPage);
   });
 
   previousPageBtn.addEventListener("click", () => {
     getCharacterData(data.info.previousPage);
+    //e.stopPropagation();
+    //e.stopImmediatePropagation();
   });
 }
 searchForm.addEventListener("submit", (e) => {
