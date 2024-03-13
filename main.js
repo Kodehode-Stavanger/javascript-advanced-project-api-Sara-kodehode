@@ -76,20 +76,29 @@ function display(data) {
     message.style.margin = "0 auto";
     container.appendChild(message);
   }
-
   nextPageBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    //e.stopPropagation();
+    //e.preventDefault();
+    e.stopPropagation();
     //e.stopImmediatePropagation();
-
-    getCharacterData(data.info.nextPage);
+    nextPage(data);
   });
 
   previousPageBtn.addEventListener("click", () => {
-    getCharacterData(data.info.previousPage);
-    //e.stopPropagation();
-    //e.stopImmediatePropagation();
+    previousPage(data);
   });
+}
+
+// separate functions for nextPage and previousPage
+function nextPage(data) {
+  {
+    getCharacterData(data.info.nextPage);
+  }
+}
+
+function previousPage(data) {
+  {
+    getCharacterData(data.info.previousPage);
+  }
 }
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
