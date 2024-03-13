@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disney Characters</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Disney characters</h1>
+      </header>
+
+      <form id="search-character-form" class="form-class">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Enter the character name"
+          required
+        />
+        <input type="submit" id="search-btn" value="Search" />
+      </form>
+      <button id="show-all-characters-btn">
+        <a href="index.html">Show all characters</a>
+      </button>
+      <div id="page-navigation">
+        <button id="previous-page-btn">Previous</button>
+        <button id="next-page-btn">Next</button>
+      </div>
+      <img
+        src="images/mickey-mouse.png"
+        alt="mickey mouse"
+        class="fixed-image"
+      />
+
+      <div id="container"></div>
+    </main>
+  </body>
+</html>
